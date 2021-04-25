@@ -7,7 +7,7 @@ from ..models import Pitch,User ###comment
 ##from .. import photos,db
 
 @main.route('/')
-def index():
+def home():
     pitches = Pitch.query.all()
     
     return render_template('home.html',pitches=pitches)

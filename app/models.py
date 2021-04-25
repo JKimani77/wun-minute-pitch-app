@@ -5,7 +5,7 @@ from . import login_manager
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
-    
+
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(225))
     email = db.Column(db.String(255),unique=True)
@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     pass_hash = db.Column(db.String(255))
     profile_pic = db.Column(db.String(255))
     pitch = db.relationship('Pitch',backref = 'user',lazy='dynamic')
-    comment = db.relationship('Comment', backref = 'user', lazy= 'dynamic')
+    #comment = db.relationship('Comment', backref = 'user', lazy= 'dynamic')
 
     @login_manager.user_loader #gets that user with that id when database query
     def load_user(user_id):
@@ -42,7 +42,7 @@ class Pitch(db.Model):
     nametype = db.Column(db.String(255))
     pitch_info = db.Column(db.String(255))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    comment = db.relationship('Comment', backref = 'pitch', lazy= 'dynamic')
+    #comment = db.relationship('Comment', backref = 'pitch', lazy= 'dynamic')
 
     def save_pitch(self):
         db.session.add(self)
