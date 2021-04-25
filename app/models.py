@@ -9,9 +9,10 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(225))
     email = db.Column(db.String(255),unique=True)
+    bio = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
     pass_hash = db.Column(db.String(255))
-    profile_pic = db.Column(db.String(255))
+    profile_pic = db.Column(db.String())
     pitch = db.relationship('Pitch',backref = 'user',lazy='dynamic')
     #comment = db.relationship('Comment', backref = 'user', lazy= 'dynamic')
 
