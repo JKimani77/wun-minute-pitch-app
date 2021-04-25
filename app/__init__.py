@@ -2,13 +2,16 @@ from flask import Flask
 from config import config_options
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-#import loginmanager l8r
+from flask_login import LoginManager
 
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 
 #create login manager instance l8r
+login_manager = LoginManager()
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'auth.login'
 
 def make_app():
     app = Flask(__name__,instance_relative_config = True)
