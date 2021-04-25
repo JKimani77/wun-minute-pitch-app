@@ -18,9 +18,11 @@ class User(db.Model, UserMixin):
     def load_user(user_id):
         return User.query.get(int(user_id))
 
+    @property
     def password(self):
         raise AttributeError('You cant read password attribute')
     
+    @password.setter
     def password(self,password):
         self.pass_secure = generate_password_hash(password)
         
@@ -32,7 +34,7 @@ class User(db.Model, UserMixin):
 
 
 class Pitch(db.Model):
-    __tablename__ == 'pitches'
+    __tablename__ = 'pitches'
     id = db.Column(db.Integer, primary_key=True)
     nametype = db.Column(db.String(255))
     pitch_info = db.Column(db.String(255))

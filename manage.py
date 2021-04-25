@@ -1,6 +1,6 @@
 from app import make_app,db
 from flask_script import Manager,Server
-#####from app.models import User,Role
+from app.models import User,Pitch
 from  flask_migrate import Migrate, MigrateCommand
 
 #Creating app instance
@@ -26,7 +26,7 @@ def make_shell_context():
     flask-script shell for testing 
     features in app and debugging
     '''
-    return dict(app = app, db = db) ##add models
+    return dict(app = app, db = db, User = User, Pitch = Pitch) ##add models
 
 
 if __name__ == '__main__':
