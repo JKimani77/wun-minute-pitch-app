@@ -5,6 +5,7 @@ from . import login_manager
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
+    
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(225))
     email = db.Column(db.String(255),unique=True)
@@ -14,21 +15,23 @@ class User(db.Model, UserMixin):
     pitch = db.relationship('Pitch',backref = 'user',lazy='dynamic')
     comment = db.relationship('Comment', backref = 'user', lazy= 'dynamic')
 
-    @login_manager.user_loader
+    @login_manager.user_loader #gets that user with that id when database query
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    @property
+    @property #make password write-only
     def password(self):
         raise AttributeError('You cant read password attribute')
     
-    @password.setter
+    @password.setter #create password hash
     def password(self,password):
         self.pass_secure = generate_password_hash(password)
-        
+
+     #check if hash has bin stored   
     def verify_password(self, password):
         return check_password_hash(self.pass_secure, password)
     
+    #for debugging
     def __repr__(self):
         return f'User {self.name}'
 

@@ -8,7 +8,7 @@ from flask_login import LoginManager
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 
-#create login manager instance l8r
+#create login manager instance 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
@@ -28,8 +28,8 @@ def make_app(config_name):
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
-    ###from .auth import auth as auth_blueprint
-    ###app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
 
 
     # setting config
