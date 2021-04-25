@@ -1,5 +1,7 @@
 from wtforms import SubmitField,TextAreaField
 from ..models import User
+from flask_wtf import FlaskForm
+from wtforms.validators import Required
 
 
 class UpdateProfile(FlaskForm):
