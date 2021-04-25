@@ -29,3 +29,24 @@ class User(db.Model, UserMixin):
     
     def __repr__(self):
         return f'User {self.name}'
+
+
+class Pitch(db.Model):
+    __tablename__ == 'pitches'
+    id = db.Column(db.Integer, primary_key=True)
+    nametype = db.Column(db.String(255))
+    pitch_info = db.Column(db.String(255))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    comment = db.relationship('Comment', backref = 'pitch', lazy= 'dynamic')
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    def getpitchcategory(cls, category):
+        pitches = Pitch.query.filter_by(category=category).all()
+        return pitches
+
+    def get_pitch_by_id(cls, id):
+        allpitches = Pitch.query.filter_by(id = id).all()
+        return allpitches
