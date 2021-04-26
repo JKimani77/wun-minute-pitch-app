@@ -4,7 +4,7 @@ from . import main
 from .forms import UpdateProfile
 ##from .forms import PitchForm, CommentForm
 from flask_login import current_user, login_required
-from ..models import Pitch,User ###comment
+from ..models import Pitch, User, comment
 from .. import db
 
 
@@ -13,6 +13,7 @@ from .. import db
 @main.route('/')
 def home():
     pitches = Pitch.query.all()
+    if 
     
     return render_template('home.html',pitches=pitches)
 

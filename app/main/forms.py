@@ -10,3 +10,7 @@ class UpdateProfile(FlaskForm):
 
 
     ##form fields to create new pitch
+
+class CreatePitch(FlaskForm):
+    pitch = TextAreaField('post a pitch here')
+    

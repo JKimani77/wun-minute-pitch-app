@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     pass_hash = db.Column(db.String(255))
     profile_pic = db.Column(db.String())
     pitch = db.relationship('Pitch',backref = 'user',lazy='dynamic')
-    #comment = db.relationship('Comment', backref = 'user', lazy= 'dynamic')
+    comment = db.relationship('Comment', backref = 'user', lazy= 'dynamic')
 
     @login_manager.user_loader #gets that user with that id when database query
     def load_user(user_id):
@@ -43,7 +43,7 @@ class Pitch(db.Model):
     nametype = db.Column(db.String(255))
     pitch_info = db.Column(db.String(255))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    #comment = db.relationship('Comment', backref = 'pitch', lazy= 'dynamic')
+    comment = db.relationship('Comment', backref = 'pitch', lazy= 'dynamic')
 
     def save_pitch(self):
         db.session.add(self)
@@ -56,3 +56,12 @@ class Pitch(db.Model):
     def get_pitch_by_id(cls, id):
         allpitches = Pitch.query.filter_by(id = id).all()
         return allpitches
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key = True)
+    upvote = db.Column(db.Integer)
+    downvote = db.Column(db.Integer)
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
