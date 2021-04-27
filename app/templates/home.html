@@ -17,8 +17,10 @@
       }
       </style>
 
-        <div class="stuff">
-          <div class="container">
+        <div class="stuff" style="background-color: rgb(240, 226, 160);">
+          <div class="container " >
+            <br>
+
             <div class="jumbotron">
             <h1>WELCOME TO PEACH</h1>
         
@@ -28,6 +30,18 @@
                 <a class="btn btn-primary" href="{{url_for('main.create_pitch')}}">
                     CREATE PITCH
                 </a>
+
+                <a class="btn btn-primary" href="{{url_for('main.promos')}}">
+                  ALL PROMO PITCHES
+              </a>
+
+              <a class="btn btn-primary" href="{{url_for('main.oneliners')}}">
+                ALL ONELINERS
+            </a>
+
+            <a class="btn btn-primary" href="{{url_for('main.prods')}}">
+              ALL PRODUCT PITCHES
+          </a>
             </div>
             </div>
             <div class="row">

@@ -3,20 +3,36 @@
 
 {%block content%}
 {{super()}}
-<div class="promo">
+<div style="background-color: rgb(240, 226, 160); class="promo">
     <h1 >Promotional Pitches</h1>
 
-{%if promot %}
+{%if promotion_pitches %}
 <div class="row">
 {%for prom in promotion_pitches%}
 
     
-        <div  class="card text-white bg-primary m-3" style="width: 20rem;">
+        <div class="card text-white bg-info m-3" style="width: 40rem;">
             <div class="card-body">
               <h5 class="card-title">{{prom.nametype}}</h5>
               
               <p class="card-text">{{prom.pitch_info}}</p>
-              <a style="color: white;" href="/createcomment/{{p.id}}" class="card-link">Create/Add Comment</a>
-              <a style="color: white;" href="/seecomments/{{p.id}}" class="card-link">See All Comments</a>
+              <button>
+                <a style="color: rgb(24, 22, 22);" href="/createcomment/{{prom.id}}" class="card-link">Create/Add Comment</a>
+
+              </button>
+
+              <button>
+                <a style="color: rgb(26, 22, 22);" href="/seecomments/{{prom.id}}" class="card-link">See All Comments</a>
+
+              </button>
             </div>
           </div>
+
+          {%endfor%}
+        </div>
+        {%else%}
+          <h3>No Promotional pitches posted yet</h3>
+        {%endif%}
+        </div>
+        
+        {%endblock%}

@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 {%block content%}
 {{super()}}
-<div class="product">
+<div style="background-color: rgb(240, 226, 160);" class="product">
     <h1 >Product Pitches</h1>
 
 {%if product_pitches %}
@@ -9,12 +9,29 @@
 {%for p in product_pitches%}
 
     
-        <div  class="card text-white bg-primary m-3" style="width: 20rem;">
+        <div  class="card text-white bg-info" style="width: 40rem;">
             <div class="card-body">
               <h5 class="card-title">{{p.nametype}}</h5>
               
               <p class="card-text">{{p.pitch_info}}</p>
-              <a style="color: white;" href="/createcomment/{{p.id}}" class="card-link">Create/Add Comment</a>
-              <a style="color: white;" href="/seecomments/{{p.id}}" class="card-link">See All Comments</a>
+              
+              <button>
+                <a style="color: rgb(15, 14, 14);" href="/createcomment/{{p.id}}" class="card-link">Create/Add Comment</a>
+              </button>
+
+              <button>
+                <a style="color: rgb(19, 18, 18);" href="/seecomments/{{p.id}}" class="card-link">See All Comments</a>
+              </button>
+
+              
             </div>
           </div>
+
+          {%endfor%}
+        </div>
+        {%else%}
+          <h3>No Product pitches posted yet</h3>
+        {%endif%}
+        </div>
+        
+        {%endblock%}

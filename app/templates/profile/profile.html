@@ -1,9 +1,10 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
+<div class="container" style="background-color: rgb(241, 234, 198);">
 <!--Edit Profile Button-->
 <div class="col-md-4">
+  <br>
 
   {% if user == current_user %}
   <button style="width: 100%;"><a style="font-size: 200%;" href="{{url_for('main.update_profile',uname=user.name)}}">Edit profile</a></button>
@@ -47,6 +48,14 @@
   <br>
 
   <div class="card" style="background-color: rgb(214, 153, 40); width: 40rem;height: 20rem;">
+    {% if user == current_user %}
+    <form  action="{{url_for('main.update_pic',uname=user.name)}}" method="post" enctype = "multipart/form-data">
+
+      <input type="file"  name="photo" class="form-control" required>
+      <input type="submit">
+    </form>
+      {% endif %}
+
     <div class="card-body">
       {% if user.profile_pic %}
   <img src="{{url_for('static',filename=user.profile_pic)}}" alt="" class="img-thumbnail">
@@ -55,13 +64,7 @@
   {% endif %}
     </div>
 
-    {% if user == current_user %}
-    <form  action="{{url_for('main.update_pic',uname=user.name)}}" method="post" enctype = "multipart/form-data">
-
-      <input type="file"  name="photo" class="form-control" required>
-      <input type="submit">
-    </form>
-      {% endif %}
+    
   </div>
   
 </div>
