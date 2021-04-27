@@ -18,5 +18,5 @@ class CreatePitch(FlaskForm):
 
 class CreateComment(FlaskForm):
     comment = TextAreaField('what do you think about that pitch')
-    vote = SelectField(u'vote', choices = [('One-star', 'One'),('One-star', 'One'),('Two-stars', 'Two'),('Three-stars', 'Three'),('Four-stars', 'Four'),('Five-stars', 'Five')])
+    vote = SelectField(u'vote', choices = [('One-star', '1-Star'),('Two-star', '2 Stars'),('Two-stars', '2-Stars'),('Three-stars', '3-Stars'),('Four-stars', '4-Stars'),('Five-stars', '5-Stars')])
     submit = SubmitField('post comment') 

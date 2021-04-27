@@ -59,13 +59,15 @@ def create_pitch():
         return redirect(url_for('main.home'))
     return render_template('peach.html', createpitchform = createpitchform)
 
+
+#function to create comment
 @main.route('/createcomment/<int:id>', methods = ["GET", "POST"])
 @login_required
 def createcomment(id):
     commentform = CreateComment()
     comment_peach = Pitch.query.get(id)
     if commentform.validate_on_submit():
-        newcomment = Comment(comment = commentform.comment.data, user = current_user)
+        newcomment = Comment(thoughts = commentform.comment.data, user = current_user,pitch = comment_peach)
         newcomment.save_comment()
 
         return redirect(url_for('main.home'))

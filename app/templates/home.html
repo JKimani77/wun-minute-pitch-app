@@ -19,16 +19,20 @@
 
 
     {%for pitch in pitches%}
-                <div class="card text-white bg-success m-3 " style="width:50rem; height: 20rem; background-color: rgb(62, 135, 219);">
-                    <div class="card-body">
-                      <h5 class="card-title">{{pitch.nametype}}</h5>
-                      
+                <div class="card text-white bg-success m-3 " style="width:50rem; height: 20rem; background-color: rgb(218, 154, 18);">
+                  <div class="card-header">
+                    <b><strong><h5 style="color: white; text-align: center;" class="card-title">{{pitch.nametype}}</h5></strong>
+                    </b>
+                  </div>  
+                  <div class="card-body">
                       <p class="card-text">{{pitch.pitch_info}}</p>
-                      <strong><p class="card-text">Posted by:{{pitch.user.name}}</p></strong>
-                      <!--
-                          <a style="color: white;" href="/addcomment/{{pitch.id}}" class="card-link">Add Comment</a>
-                      <a style="color: white;" href="/viewcomments/{{pitch.id}}" class="card-link">View Comments</a>
-                      -->
+                      <strong><p style="color: whitesmoke;" class="card-text">Posted by:{{pitch.user.name}}</p></strong>
+                      
+                      <button style="align-self: center;" type="reset"><a style="color: rgb(0, 0, 0);" href="/createcomment/{{pitch.id}}" class="card-link">Comment</a></button>
+                      <br>
+                      <br>
+                      
+                      <button style="align-self:center;" type="reset"><a style="color: rgb(0, 0, 0);" href="/seecomments/{{pitch.id}}" class="card-link">See Comments</a></button>
                     </div>
                   </div>
         {%endfor%}
