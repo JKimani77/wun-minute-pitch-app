@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+{{super()}}
+<div class="promo">
+    <h1 >Promotional Pitches</h1>
+
+{%if promot %}
+<div class="row">
+{%for prom in promotion_pitches%}
+
+    
+        <div  class="card text-white bg-primary m-3" style="width: 20rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{prom.nametype}}</h5>
+              
+              <p class="card-text">{{prom.pitch_info}}</p>
+              <a style="color: white;" href="/createcomment/{{p.id}}" class="card-link">Create/Add Comment</a>
+              <a style="color: white;" href="/seecomments/{{p.id}}" class="card-link">See All Comments</a>
+            </div>
+          </div>

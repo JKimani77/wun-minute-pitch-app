@@ -2,37 +2,71 @@
 
 {% block content %}
 <div class="container">
-<div class="row">
-<!-- displaying  Username-->
-  <div class="col-md-4">
-    <h3> {{user.name| capitalize}} </h3>
-
-    <!--Displaying user bio-->
-    {% if user.bio %}
-      <p> ~ {{user.bio}}</p>
-    {%else%}
-      <p> {{user.name| capitalize}} has no bio </p>
-    {% endif %}
-  </div>
-
-  <!--Display profile photo-->
-  <div class="col-md-4">
-
-    {% if user.profile_pic %}
-    <img src="{{url_for('static',filename=user.profile_pic)}}" alt="" class="img-thumbnail">
-    {%else%}
-    <p>No profile picture</p>
-    {% endif %}
-  </div>
-</div>
-
 <!--Edit Profile Button-->
 <div class="col-md-4">
 
-{% if user == current_user %}
-<button><a href="{{url_for('main.update_profile',uname=user.name)}}">Edit profile</a></button>
-{% endif %}
+  {% if user == current_user %}
+  <button style="width: 100%;"><a style="font-size: 200%;" href="{{url_for('main.update_profile',uname=user.name)}}">Edit profile</a></button>
+  {% endif %}
+  </div>
+
+<div class="row">
+
+
+
+
+<!-- displaying  Username-->
+  <div class="col-md-4">
+    
+      <div class="card">
+
+        <div style="background-color: rgb(214, 153, 40); width: 40rem; height: 20rem;" class="card-body">
+          <h3> {{user.name| capitalize}} </h3>
+        </div>
+
+        <div style="background-color: rgb(214, 153, 40); width: 40rem; height: 20rem;" class="card-body">
+          <!--Displaying user bio-->
+       {% if user.bio %}
+       <p style="color: whitesmoke; align-content: center; font-size: 280%;"> ~ {{user.bio}}</p>
+         {%else%}
+       <p> {{user.name| capitalize}} has no bio </p>
+       {% endif %}
+       </div>
+
+      </div>
+
+    </div>
+
 </div>
+
+
+
+
+<!--Display profile photo-->
+<div class="col-md-4">
+  <br>
+
+  <div class="card" style="background-color: rgb(214, 153, 40); width: 40rem;height: 20rem;">
+    <div class="card-body">
+      {% if user.profile_pic %}
+  <img src="{{url_for('static',filename=user.profile_pic)}}" alt="" class="img-thumbnail">
+  {%else%}
+  <p>No profile picture</p>
+  {% endif %}
+    </div>
+
+    {% if user == current_user %}
+    <form  action="{{url_for('main.update_pic',uname=user.name)}}" method="post" enctype = "multipart/form-data">
+
+      <input type="file"  name="photo" class="form-control" required>
+      <input type="submit">
+    </form>
+      {% endif %}
+  </div>
+  
+</div>
+
+
 
 
 </div>

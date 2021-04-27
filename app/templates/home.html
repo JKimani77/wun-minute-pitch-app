@@ -1,44 +1,64 @@
 {% extends 'base.html'%}
 
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
 {%block content%}
     {{super()}}
 
-<div class="container">
-    <div class="jumbotron">
-    <h1>WELCOME TO PEACH</h1>
 
-      <h4>Post pitches for different categories and comment on pitches</h4>
-      <div class="center">
-        <a class="btn btn-primary" href="{{url_for('main.create_pitch')}}">
-            CREATE PITCH
-        </a>
-    </div>
-    </div>
-    <div class="row">
-    <div ></div>
+    <style>
+      .stuff {
+        background-image: url('app/static/peach_back_grnd.jpg');
+      }
+      </style>
 
+        <div class="stuff">
+          <div class="container">
+            <div class="jumbotron">
+            <h1>WELCOME TO PEACH</h1>
+        
+              <h4>Post pitches for different categories and comment on pitches</h4>
+              <h4>Click on the category of the pitches to view all pitches from that category</h4>
+              <div class="center">
+                <a class="btn btn-primary" href="{{url_for('main.create_pitch')}}">
+                    CREATE PITCH
+                </a>
+            </div>
+            </div>
+            <div class="row">
+            <div ></div>
+        
+        
+            {%for pitch in pitches%}
+                        <div class="pitchcards" style="align-self: auto;">
+                          <div class="card text-white bg-success m-3 " style="width:50rem; height: 20rem; background-color: rgb(218, 154, 18);">
+                            <div class="card-header">
+                              <b><strong><h5 style="color: white; text-align: center;" class="card-title">{{pitch.nametype}}</h5></strong>
+                              </b>
+                            </div>  
+                            <div class="card-body">
+                                <p class="card-text">{{pitch.pitch_info}}</p>
+                                <strong><p style="color: whitesmoke;" class="card-text">Posted by:{{pitch.user.name}}</p></strong>
+                                
+                                <button style="align-self: center;" type="reset"><a style="color: rgb(0, 0, 0);" href="/createcomment/{{pitch.id}}" class="card-link">Comment</a></button>
+                                <br>
+                                <br>
+                                
+                                <button style="align-self:center;" type="reset"><a style="color: rgb(0, 0, 0);" href="/seecomments/{{pitch.id}}" class="card-link">See Comments</a></button>
+                              </div>
+                            </div>
+                        </div>
+                {%endfor%}
+        
+            </div>
+        </div>
+        </div>
 
-    {%for pitch in pitches%}
-                <div class="card text-white bg-success m-3 " style="width:50rem; height: 20rem; background-color: rgb(218, 154, 18);">
-                  <div class="card-header">
-                    <b><strong><h5 style="color: white; text-align: center;" class="card-title">{{pitch.nametype}}</h5></strong>
-                    </b>
-                  </div>  
-                  <div class="card-body">
-                      <p class="card-text">{{pitch.pitch_info}}</p>
-                      <strong><p style="color: whitesmoke;" class="card-text">Posted by:{{pitch.user.name}}</p></strong>
-                      
-                      <button style="align-self: center;" type="reset"><a style="color: rgb(0, 0, 0);" href="/createcomment/{{pitch.id}}" class="card-link">Comment</a></button>
-                      <br>
-                      <br>
-                      
-                      <button style="align-self:center;" type="reset"><a style="color: rgb(0, 0, 0);" href="/seecomments/{{pitch.id}}" class="card-link">See Comments</a></button>
-                    </div>
-                  </div>
-        {%endfor%}
-
-    </div>
-</div>
 {%endblock%}
 
 

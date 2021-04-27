@@ -16,6 +16,27 @@ def home():
     
     return render_template('home.html',pitches=pitches)
 
+
+@main.route('/promotions')
+def promos():
+    promotion_pitches = Pitch.query.filter_by(nametype='Promotion-Pitch').all()
+    
+    return render_template('promo.html', promotion_pitches=promotion_pitches)
+
+
+@main.route('/oneliners')
+def oneliners():
+    oneliner_pitches = Pitch.query.filter_by(nametype='One-Liner').all()
+    
+    return render_template('oneliner.html', oneliner_pitches=oneliner_pitches)
+
+@main.route('/products')
+def prods():
+    product_pitches = Pitch.query.filter_by(nametype='Product-Pitch').all()
+    
+    return render_template('product.html', product_pitches=product_pitches)
+
+
 #function for profile page
 @main.route('/user/<uname>')
 def profile(uname):

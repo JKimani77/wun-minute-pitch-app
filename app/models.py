@@ -41,7 +41,7 @@ class Pitch(db.Model):
     __tablename__ = 'pitches'
     id = db.Column(db.Integer, primary_key=True)
     nametype = db.Column(db.String(255))
-    pitch_info = db.Column(db.String(255))
+    pitch_info = db.Column(db.String(550))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     comment = db.relationship('Comment', backref = 'pitch', lazy= 'dynamic')
 

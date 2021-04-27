@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+
+{%block content%}
+{{super()}}
+<div class="oneliner">
+  <h1 >One-Liners</h1>
+{%if  %}
+<div class="row">
+{%for o in oneliner_pitches%}
+
+  
+      <div  class="card text-white bg-primary m-3" style="width: 20rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{o.nametype}}</h5>
+            
+            <p class="card-text">{{o.pitch_info}}</p>
+            <a style="color: white;" href="/createcomment/{{o.id}}" class="card-link">Add Comment</a>
+            <a style="color: white;" href="/seecomments/{{o.id}}" class="card-link">View Comments</a>
+          </div>
+        </div>
+  
+  
+  
+
+{%endfor%}
+</div>
+{%else%}
+  <h3>No Interview Pitches found</h3>
+{%endif%}
+</div>
+
+{%endblock%}
