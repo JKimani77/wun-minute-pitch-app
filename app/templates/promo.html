@@ -1,37 +1,36 @@
 {%extends 'base.html'%}
-
-
 {%block content%}
 {{super()}}
-<div style="background-color: rgb(240, 226, 160); class="promo">
+<div style="background-color: rgb(240, 226, 160);" class="product">
     <h1 >Promotional Pitches</h1>
 
 {%if promotion_pitches %}
 <div class="row">
-{%for prom in promotion_pitches%}
+{%for pp in promotion_pitches%}
 
     
-        <div class="card text-white bg-info m-3" style="width: 40rem;">
+        <div  class="card text-white bg-info" style="width: 40rem;">
             <div class="card-body">
-              <h5 class="card-title">{{prom.nametype}}</h5>
+              <h5 class="card-title">{{pp.nametype}}</h5>
               
-              <p class="card-text">{{prom.pitch_info}}</p>
+              <p class="card-text">{{pp.pitch_info}}</p>
+              
               <button>
-                <a style="color: rgb(24, 22, 22);" href="/createcomment/{{prom.id}}" class="card-link">Create/Add Comment</a>
-
+                <a style="color: rgb(15, 14, 14);" href="/createcomment/{{pp.id}}" class="card-link">Create/Add Comment</a>
               </button>
 
               <button>
-                <a style="color: rgb(26, 22, 22);" href="/seecomments/{{prom.id}}" class="card-link">See All Comments</a>
-
+                <a style="color: rgb(19, 18, 18);" href="/seecomments/{{pp.id}}" class="card-link">See All Comments</a>
               </button>
+
+              
             </div>
           </div>
 
           {%endfor%}
         </div>
         {%else%}
-          <h3>No Promotional pitches posted yet</h3>
+          <h3>No Promotion pitches posted yet</h3>
         {%endif%}
         </div>
         

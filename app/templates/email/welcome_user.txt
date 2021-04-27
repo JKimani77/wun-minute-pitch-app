@@ -1,0 +1,3 @@
+Hello {{user.name}}
+Welcome to Peach
+We have just seen that you have signed up for our application and want to welcome you to the family. Please enjoy the ONE MINUTE PITCHES!
