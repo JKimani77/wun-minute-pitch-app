@@ -1,2 +1,45 @@
 {% extends 'base.html'%}
-<h1>Hello WoRLd</h1>
+
+{%block content%}
+    {{super()}}
+
+<div class="container">
+    <div class="jumbotron">
+    <h1>WELCOME TO PEACH</h1>
+
+      <h4>Post pitches for different categories and comment on pitches</h4>
+      <div class="center">
+        <a class="btn btn-primary" href="{{url_for('main.create_pitch')}}">
+            CREATE PITCH
+        </a>
+    </div>
+    </div>
+    <div class="row">
+    <div ></div>
+
+
+    {%for pitch in pitches%}
+                <div class="card text-white bg-success m-3 " style="width:50rem; height: 20rem; background-color: rgb(62, 135, 219);">
+                    <div class="card-body">
+                      <h5 class="card-title">{{pitch.nametype}}</h5>
+                      
+                      <p class="card-text">{{pitch.pitch_info}}</p>
+                      <strong><p class="card-text">Posted by:{{pitch.user.name}}</p></strong>
+                      <!--
+                          <a style="color: white;" href="/addcomment/{{pitch.id}}" class="card-link">Add Comment</a>
+                      <a style="color: white;" href="/viewcomments/{{pitch.id}}" class="card-link">View Comments</a>
+                      -->
+                    </div>
+                  </div>
+        {%endfor%}
+
+    </div>
+</div>
+{%endblock%}
+
+
+
+{%block footer%}
+  {{super()}}
+  
+{%endblock%}

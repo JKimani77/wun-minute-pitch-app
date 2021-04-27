@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%import 'bootstrap/wtf.html' as wtf%}
+
+
+{%block content%}
+{{super()}}
+        <h1>CREATE/ADD PITCH</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                {{wtf.quick_form(createpitchform)}}
+            </div>
+        </div>
+    <div class="col-md-2"></div>
+    </div>
+{%endblock%}

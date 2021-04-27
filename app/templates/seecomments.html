@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    {{super()}}
+<div class="container">
+    <h1 >Comments</h1 a>
+{%if get_comments%}
+{%for i in get_comments%}
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            
+            <div class= "col-md-8">
+                <div class="card text-white bg-primary mb-3" style="width: 50rem; height: 20rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{i.pitch.nametype}}</h5>
+                      
+                      <p class="card-text">{{i.comment}}</p>
+                      <p class="card-text">Posted by:{{i.user.name}}</p>
+                      
+                    </div>
+                  </div>
+            
+            </div>
+            
+        </div>
+        {%endfor%}
+    {%else%}
+        <h3>No comments for this post </h3>
+    {%endif%}
+    </div>
+    {%endblock%}
