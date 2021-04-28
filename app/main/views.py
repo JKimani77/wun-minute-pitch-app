@@ -5,7 +5,7 @@ from .forms import UpdateProfile
 from .forms import CreatePitch, CreateComment
 from flask_login import current_user, login_required
 from ..models import Pitch, User, Comment
-from .. import db,photos
+###
 
 
 
@@ -68,17 +68,8 @@ def update_profile(uname):
     return render_template('profile/update.html',form =form)
 
 
-#function to upload profile pic
-@main.route('/user/<uname>/update/pic',methods= ['POST'])
-@login_required
-def update_pic(uname):
-    user = User.query.filter_by(name = uname).first()
-    if 'photo' in request.files:
-        filename = photos.save(request.files['photo'])
-        path = f'photos/{filename}'
-        user.profile_pic_path = path
-        db.session.commit()
-    return redirect(url_for('main.profile',uname=uname))
+#function to upload profile pic 
+
 
 
 #view to create pitch
@@ -115,3 +106,13 @@ def getcomments(id):
     get_comments = Comment.query.filter_by(pitch_id= id).all()
     
     return render_template('seecomments.html', get_comments=get_comments)
+
+
+
+
+
+
+
+
+
+
