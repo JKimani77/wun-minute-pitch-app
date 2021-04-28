@@ -51,17 +51,14 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## Technologies Used
-    Python Shell
     Python 3.7
     Flask 
-    Bootstrap
     HTML
-    CSS
-    PostgreSQL
+    SQL Database
 
-## DB Diagram
+
 ## DB diagram
-![Peach (1)]()
+![Peach](https://dbdiagram.io/d/60853d39b29a09603d12042d)
 
 ## License
 [LICENSE](LICENSE)
