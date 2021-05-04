@@ -7,6 +7,7 @@ Peach is a web app developed using Python Flask, Postgressql and SQLAlchemy The 
 ## Author
 
 Josh Kimani
+(https://peach-app.herokuapp.com/)
 
 
 
@@ -58,7 +59,7 @@ Please make sure to update tests as appropriate.
 
 
 ## DB diagram
-![Peach](https://dbdiagram.io/d/60853d39b29a09603d12042d)
+![image](https://user-images.githubusercontent.com/38456207/116395642-08d36b00-a82d-11eb-9e43-ea7485cba8e5.png)
 
 ## License
 [LICENSE](LICENSE)
